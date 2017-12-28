@@ -1,0 +1,42 @@
+<!--
+  Generated template for the EditPlayerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{player?.firstname}} {{player?.lastname}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>First Name</ion-label>
+    <ion-input [(ngModel)]="player.firstname" placeholder="Aymeric"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Last Name</ion-label>
+    <ion-input [(ngModel)]="player.lastname" placeholder="Deloche"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Age</ion-label>
+    <ion-input [(ngModel)]="player.age" type="number" placeholder="20"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+      <ion-label>Team</ion-label>
+      <ion-select [(ngModel)]="player.team" >
+          <ion-option *ngFor="let team of teamList$ | async" value={{team.name}}>{{team.name}}</ion-option>
+        </ion-select>
+    </ion-item>
+
+  <button ion-button block (click)="savePlayer(player)">Save</button> 
+  <button ion-button block color="danger" (click)="removePlayer(player)">Delete</button>
+</ion-content>
+
